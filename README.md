@@ -9,12 +9,12 @@ Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
 
 #Requirements
 
-* RARflixDev v3.0.8+
+* RARflixDev v3.0.8+ - https://owner.roku.com/add/rarflixdev
 * Webserver (apache/nginx/etc) running on the same host as the PMS (Plex Media Server)
-* root path for web server /RARflixTools
-* Webserver listening on 32499
 * PHP 5.x
 * PHP-GD
+* Webserver path: /RARflixTools
+* Webserver Port: 32499
 
 
 #Install
