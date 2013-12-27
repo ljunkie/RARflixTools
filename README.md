@@ -26,8 +26,11 @@ Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
 * CASE matters -- i.e. RARflixTools
 
 # Test your Install
-To Test: http://[yourPMSip]:32499/RARflixTools  -- must return a json result
-```{"rarflix":{"PosterTranscoder":true,"PMSaccess":true,"PosterTranscoderUrl":"http:\/\/youPMSip:32499\/RARflixTools\/poster.php"}}```
+* Use a webbrowser and visit: http://[yourPMSip]:32499/RARflixTools  
+* must return a json result
+```
+{"rarflix":{"PosterTranscoder":true,"PMSaccess":true,"PosterTranscoderUrl":"http:\/\/youPMSip:32499\/RARflixTools\/poster.php"}}
+```
 
 # Using with RARflixDev v3.0.8+
 * There is nothing you have to do (as of now). RARflixDev will noticie your server has RARflixTools installed and will start using the tools. If for some reason you don't want the tools enabled, just remove this installation or rename RARflixTools to RARflixTools.disabled. A channel restart is required too. 
