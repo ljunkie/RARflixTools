@@ -34,3 +34,20 @@ Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
 
 # Using with RARflixDev v3.0.8+
 * There is nothing you have to do (as of now). RARflixDev will noticie your server has RARflixTools installed and will start using the tools. If for some reason you don't want the tools enabled, just remove this installation or rename RARflixTools to RARflixTools.disabled. A channel restart is required too. 
+
+
+# Examples - Screenshots ( Poster Indicators )
+
+![home screen](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/1.home_screen.jpg)
+
+![all seasons](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/2.all_seasons.jpg)
+
+![all seasons season](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/5.all_seasons_season.jpg)
+
+![episodes](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/3.all_seasons_episodes.jpg)
+
+![episode preplay](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/4.all_seasons_episodes_preplay.jpg)
+
+![all movies](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/6.movie_rows.jpg)
+
+![movie preplay](https://raw.github.com/ljunkie/RARflixTools/master/examples/PosterIndicators/7.movie_preplay.jpg)
