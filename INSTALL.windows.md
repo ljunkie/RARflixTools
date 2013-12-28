@@ -12,6 +12,15 @@
     *   path: c:\xampp  
     *   ignore any alerts about UAC
 * Create Directory c:\opt\RARflix
+    * start a command prompt: cmd.exe
+
+    ```
+    cd c:\
+    mkdir opt
+    cd c:\opt
+    mkdir RARflix
+    exit
+    ```
 
 * Download RARflixTools-master.zip: https://github.com/ljunkie/RARflixTools/archive/master.zip
 
