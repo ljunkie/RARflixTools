@@ -29,6 +29,7 @@ $data = curl_exec($process);
 $authCode = curl_getinfo($process, CURLINFO_HTTP_CODE);
 if($authCode == 200) {
   $uri_base = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  $uri_base = preg_replace("/\/$/",'',$uri_base);
   $arr = array(); // json_arr container
   
   // set some defaults
@@ -39,7 +40,7 @@ if($authCode == 200) {
   
   if (gd_info()['JPEG Support'] == true and defined('PosterTranscoder') and PosterTranscoder == true) {
     $arr["rarflix"]['PosterTranscoder'] = true;
-    $arr["rarflix"]['PosterTranscoderUrl'] = $uri_base . $tools['PosterTranscoder'];
+    $arr["rarflix"]['PosterTranscoderUrl'] = $uri_base . '/' . $tools['PosterTranscoder'];
   }
   
   // check to see if we have access to the PMS 
