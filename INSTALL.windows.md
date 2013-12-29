@@ -63,6 +63,7 @@
     ```
     c:\xampp\php\php.exe -S 0.0.0.0:32499 -t "c:\opt\RARflix\"
     ```
+    * DO NOT close this window. You need to keep it running.
 
 * Test your install
     * http://127.0.0.1:32499/RARflixTools/
