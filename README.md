@@ -1,4 +1,4 @@
-RARflixTools
+RARflixTools - v0.0.5
 ============
 
 Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
