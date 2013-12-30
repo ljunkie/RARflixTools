@@ -6,7 +6,13 @@
    * @author Rob Reed (ljunkie)
    * @copyright 2013 Rob Reed
    * @lincense    Mit Style
+   *
+   *  Created: 2013-12-27
+   * Modified: 2013-12-30
+   *
    */
+
+define('VERSION', '0.0.5');
 
 require_once 'config.php';
 
@@ -39,6 +45,7 @@ if($authCode == 200) {
   // is the PosterTranscoder available?
   
   if (gd_info()['JPEG Support'] == true and defined('PosterTranscoder') and PosterTranscoder == true) {
+    $arr["rarflix"]['Version'] = VERSION;
     $arr["rarflix"]['PosterTranscoder'] = true;
     $arr["rarflix"]['PosterTranscoderType'] = INDICATOR;
     $arr["rarflix"]['PosterTranscoderUrl'] = $uri_base . '/' . $tools['PosterTranscoder'];
