@@ -30,6 +30,8 @@ if (is_array($_GET)) {
   if (!empty($thumb_base) and !empty($thumb_vars))  $url = $thumb_base . $thumb_vars;
 
   if (!empty($url)) {
+    $base_dir = dirname(__FILE__);
+
     $src_image = imagecreatefromjpeg($url);
     $size = getimagesize($url);
     $dst_image = imagecreatetruecolor($size[0],$size[1]);
@@ -41,10 +43,11 @@ if (is_array($_GET)) {
     $white = imagecolorallocate($dst_image, 255, 255, 255);
     $grey =  imagecolorallocate($dst_image, 128, 128, 128);
     $black = imagecolorallocate($dst_image, 0, 0, 0);
-    
+
+
+
     // font
-    $font_dir = dirname(__FILE__);
-    $font_dir .= '/fonts/';
+    $font_dir = $base_dir . '/fonts/';
     $style = "din1451alt.ttf";
     $font = $font_dir.$style;
     $font_size = 18;
@@ -79,11 +82,7 @@ if (is_array($_GET)) {
       $pad_right=.2;
     }
     
-    //print $src_w/$src_h;
-    //print $src_h/$src_w;
-    //exit;
-    
-    // Cropping 
+    // create the dst_image from the poster image
     imagecopyresampled($dst_image, $src_image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
     
     // calculate the width of bar indicator  
@@ -146,16 +145,40 @@ if (is_array($_GET)) {
 
     // Watched status
     imagealphablending($dst_image,true);
-    if ($progress > 0 ) {
-      imageSmoothArc ($dst_image ,  $size[0]-($size[0]*$pad_right) , $center  , $dot_size , $dot_size ,  array( 255, 165, 0, 5 ),  30, M_PI/2 );
-    } else if(!isset($_GET['watched']) or $_GET['watched'] == 0) {
-      // imagefilledrectangle($dst_image, $size[0]-48, $size[1]-3, $full_width, $size[1]-40, $orange_alpha);  
-      // imagettftext($dst_image, 25, 0,  $size[0]-38, $size[1]-8, $white, $font, "W");
-      //imagefilledellipse ( $dst_image , $size[0]-($size[0]*$pad_bottom) , $size[1]-($size[1]*$pad_bottom) , $dot_size , $dot_size , $orange_alpha );
-      //imagefilledellipse ( $dst_image ,  $size[0]-($size[0]*$pad_right) ,   $center  , $dot_size , $dot_size , $orange_alpha );
-      imageSmoothArc ($dst_image ,  $size[0]-($size[0]*$pad_right) , $center  , $dot_size , $dot_size ,  array( 255, 165, 0, 5 ),  M_PI/2, 0 );
+    if (INDICATOR == "DOT") {
+      // half dot if partially watched
+      if ($progress > 0 ) {
+	imageSmoothArc ($dst_image ,  $size[0]-($size[0]*$pad_right) , $center  , $dot_size , $dot_size ,  array( 255, 165, 0, 5 ),  30, M_PI/2 );
+      }
+      // full dot if NOT watched ( plex style )
+      else if(!isset($_GET['watched']) or $_GET['watched'] == 0) {
+	imageSmoothArc ($dst_image ,  $size[0]-($size[0]*$pad_right) , $center  , $dot_size , $dot_size ,  array( 255, 165, 0, 5 ),  M_PI/2, 0 );
+      } 
+    }
 
-    } 
+    if (INDICATOR == "CHECK") {
+      // mark it if watched
+      if(isset($_GET['watched']) and $_GET['watched'] == 1) {
+	$overlay = imagecreatefrompng('images/check-mark-512.png');
+	$pos_right =  $size[0]-($size[0]*$pad_right);
+	
+	// set the mininum height
+	$h_w = $size[0]*.1358;
+	if ($h_w < 25) $h_w = 25; // min height for checkbox is 20x20
+	
+	// verify the image will not overrun the right
+	$diff = $size[0]-$pos_right;
+	if ($diff < $h_w) $pos_right = $size[0] - ($h_w*1.1);
+
+	$start = $size[0]*.94828;
+	$end = $size[0]*.77589;
+
+	
+	if ($start-$end < $h_w) $end = $start-$h_w;
+	//imagefilledrectangle($dst_image, $start, $y1, $end, $y2, $white_alpha);  
+	imagecopyresampled($dst_image, $overlay, $pos_right, $y1*1.12, 0,0, $h_w, $h_w,  512, 512);  
+      }
+    }
     // end watched
  
 

@@ -19,4 +19,7 @@
 define('PMS_IP'  , '127.0.0.1');
 define('PMS_PORT', '32400');
 
+define('INDICATOR', 'CHECK'); 
+//define('INDICATOR', 'DOT'); 
+
 ?>
