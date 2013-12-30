@@ -40,6 +40,7 @@ if($authCode == 200) {
   
   if (gd_info()['JPEG Support'] == true and defined('PosterTranscoder') and PosterTranscoder == true) {
     $arr["rarflix"]['PosterTranscoder'] = true;
+    $arr["rarflix"]['PosterTranscoderType'] = INDICATOR;
     $arr["rarflix"]['PosterTranscoderUrl'] = $uri_base . '/' . $tools['PosterTranscoder'];
   }
   
