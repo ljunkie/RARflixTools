@@ -12,8 +12,6 @@
    *
    */
 
-define('VERSION', '0.0.5');
-
 require_once 'config.php';
 
 // include the tools -- so we can for one parse and validate

@@ -133,10 +133,10 @@ if (is_array($_GET)) {
 
     $text_height = $bar_height*.90;
     
-    // fill the indicator bar
-    $x1 = 0;
+    // fill the indicator bar ( x deprecated - fixed width )
+    // $x1 = 0;
+    // $x2 = $progress_width;
     $y1 = 0+($bar_height*$pad_top);
-    $x2 = $progress_width;
     $y2 = $bar_height+($bar_height*$pad_top);
 
     $check_box_size = $bar_height+1;
