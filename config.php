@@ -26,6 +26,6 @@ define('PMS_PORT', '32400');
 define('INDICATOR', 'CHECK'); 
 //define('INDICATOR', 'DOT'); 
 
-define('VERSION', '0.0.6');
+define('VERSION', '0.0.7');
 
 ?>
