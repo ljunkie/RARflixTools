@@ -53,6 +53,7 @@ if (is_array($_GET)) {
     // colors 
     $orange_alpha = imagecolorallocatealpha($im, 249, 159, 27, 40);
     $white_alpha  = imagecolorallocatealpha($im, 255, 255, 255, 40);
+    $black_alpha  = imagecolorallocatealpha($im, 32,32,32,40);
     $red_alpha    = imagecolorallocatealpha($im, 255, 0, 0, 40);
     $white        = imagecolorallocate($im, 255, 255, 255);
     $grey         = imagecolorallocate($im, 128, 128, 128);
@@ -130,8 +131,7 @@ if (is_array($_GET)) {
       $bar_height = $min_bar_height;
     }
     
-
-    $text_height = $bar_height*.90;
+    $text_height = $bar_height*.85;
     
     // fill the indicator bar ( x deprecated - fixed width )
     // $x1 = 0;
@@ -172,8 +172,10 @@ if (is_array($_GET)) {
     }
     
     if ($progress > 0 and $progress < 100) {
-      imagefilledrectangle($im, $pos_left, $y1, $pos_right, $y2, $white_alpha);  
-      imagettftext($im, $font_size, 0, $text_left, $text_height+($text_height*$pad_top), $black, $font, $text);
+      $fg_color = $white;
+      $bg_color = $black_alpha;
+      imagefilledrectangle($im, $pos_left, $y1, $pos_right, $y2, $bg_color);  
+      imagettftext($im, $font_size, 0, $text_left, $text_height+($text_height*$pad_top), $fg_color, $font, $text);
     }
     
 
