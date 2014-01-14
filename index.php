@@ -8,7 +8,7 @@
    * @lincense    Mit Style
    *
    *  Created: 2013-12-27
-   * Modified: 2013-12-30
+   * Modified: 2014-01-14
    *
    */
 
@@ -39,14 +39,19 @@ if($authCode == 200) {
   // set some defaults
   $arr["rarflix"]['PosterTranscoder'] = false;
   $arr["rarflix"]['PMSaccess'] = false;
-  
+  $arr["rarflix"]['Version'] = VERSION;
+
   // is the PosterTranscoder available?
-  
-  if (gd_info()['JPEG Support'] == true and defined('PosterTranscoder') and PosterTranscoder == true) {
-    $arr["rarflix"]['Version'] = VERSION;
-    $arr["rarflix"]['PosterTranscoder'] = true;
-    $arr["rarflix"]['PosterTranscoderType'] = INDICATOR;
-    $arr["rarflix"]['PosterTranscoderUrl'] = $uri_base . '/' . $tools['PosterTranscoder'];
+  if (function_exists("gd_info")) {
+    if (gd_info()['JPEG Support'] == true and defined('PosterTranscoder') and PosterTranscoder == true) {
+      $arr["rarflix"]['PosterTranscoder'] = true;
+      $arr["rarflix"]['PosterTranscoderType'] = INDICATOR;
+      $arr["rarflix"]['PosterTranscoderUrl'] = $uri_base . '/' . $tools['PosterTranscoder'];
+    } else {
+      $arr["error"]['PosterTranscoder'] = 'php-gd missing JPEG support';
+    }
+  } else {
+    $arr["error"]['PosterTranscoder'] = 'php-gd not installed?';
   }
   
   // check to see if we have access to the PMS 
