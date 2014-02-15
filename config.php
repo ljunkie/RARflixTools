@@ -3,11 +3,11 @@
    * RARflixTools - Addons/Utils for the Roku/Plex - RARflix channel
    * @link https://github.com/ljunkie/RARflixTools/
    * @author Rob Reed (ljunkie)
-   * @copyright 2013 Rob Reed
-   * @lincense    Mit Style
+   * @copyright 2013-2014 Rob Reed
+   * @license Mit Style
    *
    *  Created: 2013-12-27
-   * Modified: 2013-12-30
+   * Modified: 2014-02-15
    *
    */
 
@@ -26,6 +26,6 @@ define('PMS_PORT', '32400');
 define('INDICATOR', 'CHECK'); 
 //define('INDICATOR', 'DOT'); 
 
-define('VERSION', '0.0.8');
+define('VERSION', '0.0.9');
 
 ?>

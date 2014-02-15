@@ -1,4 +1,4 @@
-RARflixTools - v0.0.7
+RARflixTools - v0.0.9
 ============
 
 Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
@@ -9,7 +9,7 @@ Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
 
 #Requirements
 
-* RARflixDev v3.0.8+ - https://owner.roku.com/add/rarflixdev
+* RARflix 3.1.0+ - https://owner.roku.com/add/rarflix
 * Web server (apache/nginx/etc) running on the same host as the PMS (Plex Media Server)
 * PHP 5.x
 * PHP-GD
