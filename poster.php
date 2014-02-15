@@ -38,6 +38,9 @@ if (is_array($_GET)) {
   if (!empty($url)) {
     $base_dir = dirname(__FILE__);
 
+    // parse the thumb url string ( mainly for requested image height/width )
+    parse_str($thumb_vars, $vars);
+
     // image size ( cropping is possible -- not needed )
     $size = getimagesize($url);
     $dst_x = 0;   // X-coordinate of destination point. 
@@ -85,6 +88,18 @@ if (is_array($_GET)) {
       $pad_top= 1;
       $pad_right=.2;
     }
+
+    
+    // handle square requests 
+    if ( (!empty($vars["width"]) and !empty($vars["height"])) and ($vars["height"] == $vars["width"]) ) {
+
+      // widescreen image returned, but we expected it to be square
+      if ( ($vars["width"] = $img_w) and ($vars["height"] > $img_h) ) {
+        $pad_right=.3;
+      }
+      
+    }
+    
     
     /* deprecated - // calculate the width of bar indicator  
     $max = 100;
