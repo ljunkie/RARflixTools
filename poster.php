@@ -25,6 +25,8 @@ if (is_array($_GET)) {
       $watched = 1;
     } elseif (preg_match("/thumb/i",$key)) {
       // set base thumb url ( replace any external IP as this will be local )
+      $parts = preg_split("/=/",$val);
+      $val = array_shift($parts) . '=' . urlencode(implode("=",$parts));
       $thumb_base = preg_replace("/^http:\/\/[^\/]+/",'http://'.PMS_IP.':'.PMS_PORT,$val);
     } else{
       // save any additional vars to append to the base_url
