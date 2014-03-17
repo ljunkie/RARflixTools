@@ -7,7 +7,7 @@
    * @license Mit Style
    *
    *  Created: 2013-12-27
-   * Modified: 2014-02-15
+   * Modified: 2014-03-17
    *
    */
 
@@ -26,6 +26,6 @@ define('PMS_PORT', '32400');
 define('INDICATOR', 'CHECK'); 
 //define('INDICATOR', 'DOT'); 
 
-define('VERSION', '0.0.9');
+define('VERSION', '0.1.0');
 
 ?>
