@@ -11,6 +11,8 @@
    *
    */
 
+define('TOKEN', '');
+
   /* 
    * Do NOT edit -- these should not need changing.
    *

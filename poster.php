@@ -33,7 +33,12 @@ if (is_array($_GET)) {
       $thumb_vars .= "&$key=$val";
     }
   }
-  if (!empty($thumb_base) and !empty($thumb_vars))  $url = $thumb_base . $thumb_vars;
+  if (!empty($thumb_base) and !empty($thumb_vars)) {
+    $url = $thumb_base . $thumb_vars;
+    if (defined('TOKEN') && TOKEN) {
+      $url .= "&X-Plex-Token=" . TOKEN;
+    }
+  }
   if (!isset($progress)) $progress=0;
   
   // continue with a valid image
@@ -44,16 +49,28 @@ if (is_array($_GET)) {
     parse_str($thumb_vars, $vars);
 
     // image size ( cropping is possible -- not needed )
-    $size = getimagesize($url);
+    $curl = curl_init($url);
+    $headers = array('Content-Type: application/xml; charset=utf-8', 
+                     'X-Plex-Client-Identifier: RARflixTools'
+                     );
+    if (defined('TOKEN') && TOKEN) {
+      array_push($headers, 'X-Plex-Token:' . TOKEN);
+    }
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_HEADER, 0);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 15);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $raw = curl_exec($curl);
+    curl_close($curl);
+
+    $im = imagecreatefromstring($raw);  
+    $img_w = imagesx($im);
+    $img_h = imagesy($im);
+
     $dst_x = 0;   // X-coordinate of destination point. 
     $dst_y = 0;   // Y --coordinate of destination point. 
     $src_x = 0;   // Crop Start X position in original image
     $src_y = 0;   // Crop Srart Y position in original image
-    $img_w = $size[0];
-    $img_h = $size[1];
-
-    // 
-    $im = imagecreatefromjpeg($url);
     
     // colors 
     $orange_alpha = imagecolorallocatealpha($im, 249, 159, 27, 40);

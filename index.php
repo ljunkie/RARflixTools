@@ -24,7 +24,14 @@ foreach ($tools as $tool) {
 }
 
 $process = curl_init('http://'.PMS_IP.':'. PMS_PORT);
-curl_setopt($process, CURLOPT_HTTPHEADER, array('Content-Type: application/xml; charset=utf-8', 'Content-Length: 0', 'X-Plex-Client-Identifier: RARflixTools'));
+$headers = array('Content-Type: application/xml; charset=utf-8', 
+                 'Content-Length: 0',
+                 'X-Plex-Client-Identifier: RARflixTools',
+                 );
+if (defined('TOKEN') && TOKEN) {
+  array_push($headers, 'X-Plex-Token:' . TOKEN);
+}
+curl_setopt($process, CURLOPT_HTTPHEADER, $headers );
 curl_setopt($process, CURLOPT_HEADER, 0);
 curl_setopt($process, CURLOPT_TIMEOUT, 5);
 curl_setopt($process, CURLOPT_RETURNTRANSFER, true);
