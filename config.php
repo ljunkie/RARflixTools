@@ -7,16 +7,16 @@
    * @license Mit Style
    *
    *  Created: 2013-12-27
-   * Modified: 2014-03-17
+   * Modified: 2014-11-19
    *
    */
 
 define('TOKEN', '');
 
-  /* 
+  /*
    * Do NOT edit -- these should not need changing.
    *
-   * RARflixTools are only supported to run on the LOCAL PMS server. 
+   * RARflixTools are only supported to run on the LOCAL PMS server.
    *
    */
 
@@ -25,9 +25,9 @@ error_reporting(0); // build-in webserver does not play well if there are ANY er
 define('PMS_IP'  , '127.0.0.1');
 define('PMS_PORT', '32400');
 
-define('INDICATOR', 'CHECK'); 
-//define('INDICATOR', 'DOT'); 
+define('INDICATOR', 'CHECK');
+//define('INDICATOR', 'DOT');
 
-define('VERSION', '0.1.0');
+define('VERSION', '0.1.1');
 
 ?>

@@ -8,7 +8,7 @@
    * @license Mit Style
    *
    *  Created: 2013-12-27
-   * Modified: 2014-02-14
+   * Modified: 2014-11-19
    *
    */
 
@@ -24,7 +24,7 @@ foreach ($tools as $tool) {
 }
 
 $process = curl_init('http://'.PMS_IP.':'. PMS_PORT);
-$headers = array('Content-Type: application/xml; charset=utf-8', 
+$headers = array('Content-Type: application/xml; charset=utf-8',
                  'Content-Length: 0',
                  'X-Plex-Client-Identifier: RARflixTools',
                  );
@@ -42,7 +42,7 @@ if($authCode == 200) {
   $uri_base = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   $uri_base = preg_replace("/\/$/",'',$uri_base);
   $arr = array(); // json_arr container
-  
+
   // set some defaults
   $arr["rarflix"]['PosterTranscoder'] = false;
   $arr["rarflix"]['PMSaccess'] = false;
@@ -60,12 +60,12 @@ if($authCode == 200) {
   } else {
     $arr["error"]['PosterTranscoder'] = 'php-gd not installed?';
   }
-  
-  // check to see if we have access to the PMS 
+
+  // check to see if we have access to the PMS
   //  we might want to try an load a photo for a better check
   $xml = simplexml_load_string($data);
   if (!empty($xml['machineIdentifier']))  $arr["rarflix"]['PMSaccess'] = true;
-  
+
   // return json
   print json_encode($arr);
 } else {
@@ -77,5 +77,5 @@ if($authCode == 200) {
     print $data;
   }
 }
- 
+
 ?>
