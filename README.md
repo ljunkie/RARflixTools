@@ -1,4 +1,4 @@
-RARflixTools - v0.1.0
+RARflixTools - v0.1.1
 ============
 
 Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
@@ -21,19 +21,19 @@ Supplemental Tools for RARflix ( a modified Plex chanel for the Roku )
 * download the zip from github
 * install a web server on your PMS server
 * set the web server to listen on port 32499
-* unzip RARflixTools dir in your webroot 
+* unzip RARflixTools dir in your webroot
 * if your webroot is /var/www/html then you should have /var/www/html/RARflixTools/
 * CASE matters -- i.e. RARflixTools
 
 # Test your Install
-* Use a web browser and visit: http://[yourPMSip]:32499/RARflixTools  
+* Use a web browser and visit: http://[yourPMSip]:32499/RARflixTools
 * must return a json result
 ```
 {"rarflix":{"PosterTranscoder":true,"PMSaccess":true,"PosterTranscoderUrl":"http:\/\/youPMSip:32499\/RARflixTools\/poster.php"}}
 ```
 
 # Using with RARflixDev v3.0.8+
-* There is nothing you have to do (as of now). RARflixDev will notice your server has RARflixTools installed and will start using the tools. If for some reason you don't want the tools enabled, just remove this installation or rename RARflixTools to RARflixTools.disabled. A channel restart is required too. 
+* There is nothing you have to do (as of now). RARflixDev will notice your server has RARflixTools installed and will start using the tools. If for some reason you don't want the tools enabled, just remove this installation or rename RARflixTools to RARflixTools.disabled. A channel restart is required too.
 
 
 # Examples - sScreen shots ( Poster Indicators )
